@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "milena aguiar, braulio matheus",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": 76.2,
+      "left": -186.6,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "servo_x", "top": -120, "left": 160, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo_y", "top": -40, "left": 160, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led",
+      "top": 13.85,
+      "left": -97.4,
+      "rotate": 180,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_init",
+      "top": -118.8,
+      "left": -111.4,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "joystick1:VCC", "esp:3V3.1", "red", [ "v19.2", "h96", "v-182.22" ] ],
+    [ "joystick1:GND", "esp:GND.1", "black", [ "v38.4", "h120.28" ] ],
+    [ "joystick1:VRX", "esp:4", "green", [] ],
+    [ "joystick1:VRY", "esp:5", "blue", [] ],
+    [ "servo_x:VCC", "esp:5V", "red", [] ],
+    [ "servo_x:GND", "esp:GND.2", "black", [] ],
+    [ "servo_x:PWM", "esp:14", "green", [ "h-188.8", "v262.38" ] ],
+    [ "servo_y:VCC", "esp:5V", "red", [] ],
+    [ "servo_y:GND", "esp:GND.3", "black", [] ],
+    [ "servo_y:PWM", "esp:15", "green", [ "h-25.6", "v-38.6", "h-150.4", "v105.78" ] ],
+    [ "esp:2", "r_led:1", "yellow", [ "v19.02", "h-129.83" ] ],
+    [ "r_led:2", "led_init:A", "yellow", [] ],
+    [ "led_init:C", "esp:GND.4", "black", [] ],
+    [ "joystick1:VERT", "esp:5", "green", [ "v9.6", "h67.2", "v-153.6", "h81.88" ] ],
+    [ "joystick1:HORZ", "esp:4", "blue", [ "v28.8", "h67.2", "v-163.02" ] ]
+  ],
+  "dependencies": {}
+}
