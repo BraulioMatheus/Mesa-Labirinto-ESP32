@@ -114,5 +114,3 @@ Este documento descreve todas as tarefas utilizadas no sistema embarcado, suas r
 
 ---
 
-**Documento pronto para uso no repositório.**
-
