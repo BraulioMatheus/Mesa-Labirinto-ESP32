@@ -18,6 +18,33 @@ Desenvolver um sistema embarcado capaz de:
 
 ---
 
+# 🧩 Objetivo da Fase 1
+
+- Ler o joystick (X/Y) via ADC  
+- Converter valores em PWM para dois servos  
+- Controlar a mesa em 2 eixos  
+- Implementar **3 tarefas FreeRTOS obrigatórias**  
+- Fazer o LED piscar na inicialização  
+- Exibir logs via Serial (JSON simples)  
+- Simulação totalmente funcional via **Wokwi**
+
+---
+
+# 🧵 Tarefas FreeRTOS (descrição completa)
+
+As tarefas implementadas nesta fase são:
+
+| Tarefa | Função | Prioridade | Período |
+|--------|--------|------------|----------|
+| **TaskJoystick** | Lê ADC X/Y, normaliza | 6 | 10 ms |
+| **TaskServo** | Converte joystick → PWM e move os servos | 6 | 20 ms |
+| **TaskStatus** | LED + logs via Serial | 4 | 200 ms |
+
+Arquivo completo:  
+📄 `docs/FreeRTOS-Tarefas.md`
+
+---
+
 # 🧠 Arquitetura do Sistema
 
 ```mermaid
@@ -33,4 +60,3 @@ E[MPU6050] -->|I2C| B
 B -->|UART JSON/CSV| F[Computador]
 F -->|Inserção de Dados| G[InfluxDB]
 G -->|Visualização| H[Grafana]
-
